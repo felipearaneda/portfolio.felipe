@@ -1,0 +1,98 @@
+---
+import { Code } from "astro:components"
+import ProjectItem from "./ProjectItem.astro"
+import Tags from "./Tags.astro"
+
+const PROJECTS = [
+    {
+        date: '10/02/2021',
+        latest: 'Latest',
+        title: 'Project 1',
+        github: 'https://github.com/felipearaneda',
+        image: '/projects/svgl2.png',
+        tags: ['HTML','CSS', 'JavaScript'],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        link: 'https://github.com/felipearaneda',
+    },
+    {
+        date: '10/02/2021',
+        title: 'Project 2',
+        github: '#',
+        image: '/projects/svgl2.png',
+        tags: ['HTML','CSS', 'JavaScript'],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        link: '#',
+    },
+    {
+        date: '10/02/2021',
+        title: 'Project 3',
+        github: '#',
+        image: '/projects/svgl2.png',
+        tags: ['HTML','CSS', 'JavaScript'],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        link: '#',
+    }
+
+]
+
+---
+<div class="grid 
+    grid-cols-2 
+    gap-10
+    max-w-screen-2xl 
+    lg:mx-64" 
+    id="projects">
+{
+    PROJECTS.map(project => (
+        /*  */
+        <article class="pl-2 pb-6">
+            <h5 class="flex flex-wrap 
+                lg:mb-2 
+                text-2xl 
+                font-bold 
+                tracking-tight 
+                text-gray-200 
+                dark:text-white 
+                lg:p-2">
+                {project.title}
+            {
+                project.latest && (
+                    <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 lg:ms-3">
+                        {project.latest}
+                    </span>
+                )    
+            }
+            </h5>
+            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 lg:p-2">
+                {project.date}
+            </time>
+            <div class="rounded-3xl shadow-2xl shadow-slate-400/10" id="imageProject">
+                <img
+                    class="rounded-3xl size-100 lg:p-4 lg:mx-0 bg-transparent"
+                    src={project.image} 
+                    alt={'Screenshot of the project ${image}'} 
+                />
+            </div>
+            <nav class="flex flex-wrap gap-1 py-2 px-0">
+                {project.tags.map(tag => (
+                    <Tags class="lg:p-2">{tag}</Tags>
+                    ))
+                }
+            </nav>
+            <p class="lg:mb-3 font-normal text-gray-200 dark:text-gray-100 text-pretty lg:p-2">{project.description}</p>
+            {
+                project.link && (
+                    <div class="pt-2">
+                        <a href="https://github.com/felipearaneda" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-2 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Read more
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    </div>
+                )
+            }
+        </article>
+    ))
+}
+</div>
