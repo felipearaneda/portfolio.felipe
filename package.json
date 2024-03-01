@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "deploy": "npm run build && aws s3 sync ./dist s3://dev-felipe-portfolio",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
